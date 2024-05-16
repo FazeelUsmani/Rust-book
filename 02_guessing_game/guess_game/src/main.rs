@@ -9,12 +9,12 @@ fn main() {
     // println!("The secret number is: {}", secret_number);
     
     let mut chances = 0;
-    while chances <= 3 {
+    loop {
         let mut guess = String::new();
         io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line");      // crashing on an error
-    println!("You guessed: {guess}");
+        println!("You guessed: {guess}");
 
         // Shadowing guess variable with u32 datatype.
         // let guess: u32 = match guess.trim().parse()
@@ -25,7 +25,6 @@ fn main() {
             Ok(num) => num,
             Err(_) => continue,     // here _ is a catall value will catch all types of Exceptions.
         };
-
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
@@ -41,6 +40,5 @@ fn main() {
             println!("You lost! The secret number was: {}", secret_number);
             break;
         }
-    }
-    
+    }    
 }
