@@ -12,18 +12,18 @@ fn main() {
     loop {
         let mut guess = String::new();
         io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");      // crashing on an error
+            .read_line(&mut guess)
+            .expect("Failed to read line");      // crashing on an error
         println!("You guessed: {guess}");
 
-        // Shadowing guess variable with u32 datatype.
+        // Shadowing guess variable with u32 to utilize same variable name with different datatype
         // let guess: u32 = match guess.trim().parse()
         //                        .expect("Please type a number!");
 
         // expect is crashing on an error. So, let's handle using Ok, Err types enums.
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
-            Err(_) => continue,     // here _ is a catall value will catch all types of Exceptions.
+            Err(_) => continue,     // here _ is a catchall value will catch all types of Exceptions.
         };
 
         match guess.cmp(&secret_number) {
